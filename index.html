@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Cool Dogs</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <script type="text/x-handlebars">
+        <ul>
+          <li>{{#link-to 'dogs'}}Show Dog{{/link-to}}</li> 
+          <li>{{#link-to 'cats'}}Show Cat{{/link-to}}</li> 
+        </ul>
+    <div>
+      {{outlet}}
+    </div>
+  </script>
+
+  <script type="text/x-handlebars" id="dogs">
+      {{#each dog in model}}
+        <tr>
+          <td>
+            <p><img {{bind-attr src=dog}} /></p>
+          </td>
+        </tr>
+      {{/each}}
+      <p>Or enter a url to add a picture!</p>
+      <p>{{input type="text" value=imageUrl}}</p>
+      <p><button {{action moreDog imageUrl}}>Add a dog!</button></p>
+  </script>
+
+  <script type="text/x-handlebars" id="cats">
+      {{#each cat in model}}
+        <tr>
+          <td>
+            <p><img {{bind-attr src=cat}} /></p>
+          </td>
+        </tr>
+      {{/each}}
+      <p>Or enter a url to add a picture!</p>
+      <p>{{input type="text" value=imageUrl}}</p>
+      <p><button {{action moreCat imageUrl}}>Add a cat!</button></p>
+  </script>
+
+  <script type="text/x-handlebars" id="loading">
+    <p>Your animal has been loaded! Return to see it :) </p>
+  </script>
+
+  <script src="js/libs/jquery-v1.11.1.js"></script>
+  <script src="js/libs/handlebars-v1.3.0.js"></script>
+  <script src="js/libs/ember-v1.6.1.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.1.0/moment.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
